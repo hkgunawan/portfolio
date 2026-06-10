@@ -11,7 +11,7 @@
   --border-soft: rgba(255, 255, 255, 0.06);
   --foreground: #e6edf3;
   --muted: #8b949e;
-  --muted-2: #6e7681;
+  --muted-2: #7d8590;
   --accent: #3fb950;
   --accent-2: #56d4dd;
   --accent-soft: rgba(63, 185, 80, 0.14);
@@ -26,7 +26,7 @@
   --border-soft: rgba(0, 0, 0, 0.07);
   --foreground: #11161c;
   --muted: #55606b;
-  --muted-2: #79828d;
+  --muted-2: #6b7480;
   --accent: #1a7f37;
   --accent-2: #0b7a85;
   --accent-soft: rgba(26, 127, 55, 0.1);
@@ -109,6 +109,13 @@ body::after {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border);
+}
+
+/* Firefox (guarded so it doesn't override the styled WebKit scrollbar) */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--border) transparent;
+  }
 }
 
 :focus-visible {

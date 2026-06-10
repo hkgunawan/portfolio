@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Mail } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { profile } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -51,9 +52,11 @@ export function Nav() {
           <ThemeToggle />
           <a
             href={`mailto:${profile.email}`}
-            className="btn-primary btn-sm ml-1 hidden sm:inline-flex"
+            className="btn-primary btn-sm ml-1"
+            aria-label="Email Hendra"
           >
-            Get in touch
+            <Mail size={14} />
+            <span className="hidden sm:inline">Get in touch</span>
           </a>
         </div>
       </nav>

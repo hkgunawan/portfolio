@@ -50,6 +50,17 @@ export const metadata: Metadata = {
 // Apply the saved theme before paint to avoid a flash. Dark is the default.
 const themeScript = `try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')}catch(e){}`;
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: "https://hendragunawan.com",
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.linkedin],
+  knowsAbout: ["React", "Next.js", "Node.js", "TypeScript", "PHP", "Laravel", "Fintech"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +70,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>
