@@ -1,26 +1,251 @@
 @import "tailwindcss";
 
+/* Dark is the default; `.light` on <html> opts into the light palette. */
+@custom-variant light (&:where(.light, .light *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0b;
+  --surface: #101216;
+  --surface-2: #15181e;
+  --border: #232a32;
+  --border-soft: rgba(255, 255, 255, 0.06);
+  --foreground: #e6edf3;
+  --muted: #8b949e;
+  --muted-2: #6e7681;
+  --accent: #3fb950;
+  --accent-2: #56d4dd;
+  --accent-soft: rgba(63, 185, 80, 0.14);
+  --on-accent: #04130a;
+}
+
+.light {
+  --background: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f4;
+  --border: #dfe3e8;
+  --border-soft: rgba(0, 0, 0, 0.07);
+  --foreground: #11161c;
+  --muted: #55606b;
+  --muted-2: #79828d;
+  --accent: #1a7f37;
+  --accent-2: #0b7a85;
+  --accent-soft: rgba(26, 127, 55, 0.1);
+  --on-accent: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Ambient glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(55rem 55rem at 80% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(45rem 45rem at -5% 105%, rgba(86, 212, 221, 0.07), transparent 55%);
+  pointer-events: none;
+}
+
+/* Faint terminal grid, faded toward the edges */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 58px 58px;
+  -webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 78%);
+  mask-image: radial-gradient(circle at 50% 0%, black, transparent 78%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 999px;
+  border: 3px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+section {
+  scroll-margin-top: 84px;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.cursor {
+  display: inline-block;
+  width: 0.62ch;
+  height: 1.05em;
+  transform: translateY(0.15em);
+  background: var(--accent);
+  animation: blink 1.05s steps(1) infinite;
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.55rem;
+    padding: 0.62rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: var(--accent);
+    color: var(--on-accent);
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.25s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: 0 12px 30px -10px var(--accent);
+  }
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.55rem;
+    padding: 0.62rem 1.1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    padding: 0.32rem 0.72rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .badge::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .card {
+    border-radius: 0.85rem;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 55%, transparent);
+    padding: 1.5rem;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  }
+  .card:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+  .chip {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.45rem;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--foreground);
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
