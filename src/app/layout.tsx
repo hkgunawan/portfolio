@@ -57,7 +57,7 @@ const personJsonLd = {
   jobTitle: profile.role,
   url: "https://hendragunawan.com",
   email: `mailto:${profile.email}`,
-  sameAs: [profile.linkedin],
+  sameAs: [profile.linkedin, profile.github],
   knowsAbout: ["React", "Next.js", "Node.js", "TypeScript", "PHP", "Laravel", "Fintech"],
 };
 

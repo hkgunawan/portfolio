@@ -34,6 +34,7 @@ export const profile = {
   availability: ["Open to remote — worldwide", "Relocation: SG · AU · NZ"],
   email: "hendra@hendragunawan.com",
   linkedin: "https://www.linkedin.com/in/hendra-gunawan-73b04517a",
+  github: "https://github.com/hkgunawan",
   summary:
     "Senior software engineer with 7+ years building and integrating production web and mobile systems across fintech, e-commerce, and public-sector platforms. Full-stack across React / Next.js, Node.js, and PHP / Laravel — with a track record of third-party API integration, legacy-system modernization, and shipping working software under real-world constraints.",
 };

@@ -14,7 +14,15 @@ export function Footer() {
           </div>
           <div className="space-y-1.5 sm:text-right">
             <p className="text-xs text-muted-2">
-              Built with Next.js, TypeScript &amp; Tailwind CSS
+              Built with Next.js, TypeScript &amp; Tailwind CSS ·{" "}
+              <a
+                href="https://github.com/hkgunawan/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-border underline-offset-2 transition-colors hover:text-foreground"
+              >
+                view source
+              </a>
             </p>
             <p className="text-xs text-muted-2">
               © {new Date().getFullYear()} {profile.name}

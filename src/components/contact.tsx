@@ -40,6 +40,14 @@ export function Contact() {
             >
               LinkedIn <ArrowUpRight size={16} />
             </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              GitHub <ArrowUpRight size={16} />
+            </a>
           </div>
         </div>
       </Reveal>
