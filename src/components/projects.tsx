@@ -10,7 +10,14 @@ export function Projects() {
         <SectionHeader index="02" title="Live Projects" />
       </Reveal>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <Reveal>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+          Side projects I designed, built, and shipped end-to-end — data layer, UI, tests, CI, and production deploy.
+          Both are live and open-source; click through to use them or read the code.
+        </p>
+      </Reveal>
+
+      <div className="mt-8 grid gap-5 sm:grid-cols-2">
         {liveProjects.map((p, i) => (
           <Reveal key={p.title} delay={i * 0.08}>
             <article className="card flex h-full flex-col">
@@ -35,7 +42,7 @@ export function Projects() {
                   rel="noopener noreferrer"
                   className="mono inline-flex items-center gap-1 text-sm text-accent hover:underline"
                 >
-                  Visit <ArrowUpRight size={14} />
+                  {p.live.replace(/^https?:\/\//, "")} <ArrowUpRight size={14} />
                 </a>
                 <a
                   href={p.repo}
