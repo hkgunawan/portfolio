@@ -6,7 +6,7 @@ export function Skills() {
   return (
     <section id="skills" className="py-16 sm:py-24">
       <Reveal>
-        <SectionHeader index="03" title="Skills" />
+        <SectionHeader index="04" title="Skills" />
       </Reveal>
 
       <div className="mt-10 space-y-5">

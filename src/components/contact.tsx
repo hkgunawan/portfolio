@@ -8,7 +8,7 @@ export function Contact() {
   return (
     <section id="contact" className="py-16 sm:py-24">
       <Reveal>
-        <SectionHeader index="04" title="Contact" />
+        <SectionHeader index="05" title="Contact" />
       </Reveal>
 
       <Reveal delay={0.05}>

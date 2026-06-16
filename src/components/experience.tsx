@@ -6,7 +6,7 @@ export function Experience() {
   return (
     <section id="experience" className="py-16 sm:py-24">
       <Reveal>
-        <SectionHeader index="02" title="Experience" />
+        <SectionHeader index="03" title="Experience" />
       </Reveal>
 
       <div className="mt-10 space-y-4">
