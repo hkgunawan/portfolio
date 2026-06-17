@@ -28,6 +28,7 @@ export type SkillGroup = {
 export type Project = {
   title: string;
   blurb: string;
+  highlights?: string[];
   stack: string[];
   live: string;
   repo: string;
@@ -132,16 +133,26 @@ export const liveProjects: Project[] = [
   {
     title: "Markets",
     blurb:
-      "A personal markets dashboard — gold, crypto and indices with live candlestick charts (Supertrend + RSI), plus near-real-time insider buys (SEC Form 4) and 13F “smart-money” fund accumulation. Multi-provider data with graceful fallback and rate-limit-aware caching.",
-    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "lightweight-charts"],
+      "A personal markets dashboard for gold, crypto, indices and stocks — live candlestick and Heikin-Ashi charts with faithful community indicators, a one-glance signals view, an earnings calendar, company fundamentals, and real regulatory data: near-real-time insider buys (SEC Form 4) and 13F “smart-money” fund accumulation.",
+    highlights: [
+      "Supertrend and Ultimate-MACD indicators ported faithfully from their TradingView Pine scripts as pure, unit-tested functions.",
+      "Multi-provider data (Finnhub · Twelve Data · Steam) with graceful fallback and rate-limit-aware caching — never a blank screen.",
+      "A Signals page that synthesizes trend, momentum, insider buying and fund accumulation per ticker.",
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "lightweight-charts", "Vitest"],
     live: "https://markets.hendragunawan.com",
     repo: "https://github.com/hkgunawan/market-dashboard",
   },
   {
     title: "Game Ranker",
     blurb:
-      "An interactive leaderboard of the best PC & PlayStation games (2015→today). 500 titles auto-discovered from RAWG and scored by blending Metacritic with real Steam player sentiment on a tunable critics↔players weighting; refreshed weekly. Filter by year, platform, genre and mode, with a per-game breakdown.",
-    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "Vitest"],
+      "An interactive leaderboard of the best PC & PlayStation games (2015→today). 800 titles auto-discovered from RAWG and scored by blending Metacritic critics with real Steam player sentiment on a tunable critics↔players weighting. Filter by year, platform, genre and mode, with a per-game breakdown.",
+    highlights: [
+      "Fully automated, self-updating pipeline — a weekly GitHub Actions cron rebuilds the dataset; no runtime API calls, fully static.",
+      "Transparent, unit-tested ranking model with sample-size confidence weighting.",
+      "Shareable static “best of” pages (per year and genre) with generated social-preview cards and a sitemap.",
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "GitHub Actions", "Vitest"],
     live: "https://games.hendragunawan.com",
     repo: "https://github.com/hkgunawan/game-ranker",
   },

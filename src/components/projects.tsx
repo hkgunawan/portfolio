@@ -1,4 +1,4 @@
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight, Code2, Check } from "lucide-react";
 import { liveProjects } from "@/lib/data";
 import { SectionHeader } from "./section-header";
 import { Reveal } from "./reveal";
@@ -26,6 +26,17 @@ export function Projects() {
                 <span className="mono inline-flex items-center gap-1 text-xs text-accent-2">live ●</span>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">{p.blurb}</p>
+
+              {p.highlights && (
+                <ul className="mt-4 space-y-2">
+                  {p.highlights.map((h) => (
+                    <li key={h} className="flex gap-2 text-sm leading-relaxed text-muted">
+                      <Check size={15} className="mt-0.5 shrink-0 text-accent-2" aria-hidden="true" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {p.stack.map((s) => (
