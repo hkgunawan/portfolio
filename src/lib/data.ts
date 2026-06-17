@@ -130,17 +130,17 @@ export const selectedWork: WorkItem[] = [
 
 export const liveProjects: Project[] = [
   {
-    title: "Market Dashboard",
+    title: "Markets",
     blurb:
-      "A personal markets dashboard — gold, crypto and indices with live charts and indicators, plus near-real-time insider buys (SEC Form 4) and 13F “smart-money” fund accumulation. Multi-provider data with graceful fallback and rate-limit-aware caching.",
+      "A personal markets dashboard — gold, crypto and indices with live candlestick charts (Supertrend + RSI), plus near-real-time insider buys (SEC Form 4) and 13F “smart-money” fund accumulation. Multi-provider data with graceful fallback and rate-limit-aware caching.",
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "lightweight-charts"],
-    live: "https://dashboard.hendragunawan.com",
+    live: "https://markets.hendragunawan.com",
     repo: "https://github.com/hkgunawan/market-dashboard",
   },
   {
     title: "Game Ranker",
     blurb:
-      "An interactive leaderboard of the best PC & PlayStation games (2015→today). 115 titles merged from two curated rankings and re-scored with a transparent Bayesian model — filter by year and platform, with a per-game breakdown.",
+      "An interactive leaderboard of the best PC & PlayStation games (2015→today). 500 titles auto-discovered from RAWG and scored by blending Metacritic with real Steam player sentiment on a tunable critics↔players weighting; refreshed weekly. Filter by year, platform, genre and mode, with a per-game breakdown.",
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "Vitest"],
     live: "https://games.hendragunawan.com",
     repo: "https://github.com/hkgunawan/game-ranker",
